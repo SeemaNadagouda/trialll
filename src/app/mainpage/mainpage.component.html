@@ -1,0 +1,95 @@
+<div class="example-main">
+<!-- 
+  <h1 class="col">
+    Registeration for Meeting/Seminar
+  </h1> -->
+  
+  <br><br>
+      <form class="example-form">
+          <mat-label>Name</mat-label><br>
+          <mat-form-field class="example-full-width">
+            <input matInput >
+          </mat-form-field> <br><br>
+        
+          <mat-label>Floor No. </mat-label><br>
+          <mat-form-field class="example-full-width">
+            <input matInput >
+          </mat-form-field><br><br>
+
+          <mat-label>Number of attendants</mat-label><br>
+          <mat-form-field class="example-full-width">
+            <input matInput  [(ngModel)]="val" name="val">
+          </mat-form-field> <br><br>
+
+          <mat-radio-group class="rad">
+              <mat-radio-button value="1">Seminar</mat-radio-button>
+              <mat-radio-button value="2">Meeting</mat-radio-button>
+            </mat-radio-group><br><br>
+
+            
+
+          <!-- 
+            <mat-label>Email-id of attendants</mat-label><br>
+            <mat-form-field class="example-full-width">
+                <textarea matInput  [formControl]="emailFormControl" 
+                       [errorStateMatcher]="matcher"  [(ngModel)]="emails" name="emails" (blur)="tex=isMultiValid()"  ></textarea>
+                <mat-hint>{{tex}}</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field><br><BR> 
+                *ngElseIf="tex==nam"
+ -->
+                
+                  
+               <mat-label>Email-id of attendants</mat-label><br>
+                <textarea matInput  class="example-full-width" [(ngModel)]="emails" name="emails"
+                       (blur)="tex=isMultiValid()" ></textarea>
+                <mat-error *ngIf="tex==false" >
+                  Please enter a valid email addresses
+                </mat-error>
+                <mat-error *ngIf="val!=tex" >
+                  Please enter correct number of email-Id's 
+                </mat-error><br><br>
+                 
+
+                <mat-chip-list #chipList>
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                
+<!--                
+          <div class="example-button-row">
+           <button mat-raised-button color="primary" (click)="openDialog()">Submit</button>
+
+           <li *ngIf="animal">
+            You chose: <i>{{animal}}</i>
+          </li> -->
+          
+            <button mat-raised-button (click)="openDialog()">Submit</button>
+          
+          <li *ngIf="animal">
+            You chose: <i>{{animal}}</i>
+          </li>
+        
+          
+                <br><br>
+
+
+        </form>
+   
+
+
+  
+</div>
